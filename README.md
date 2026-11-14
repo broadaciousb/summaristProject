@@ -1,8 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+Summarist Project
+
+A full-stack book subscription SaaS platform where users can digitally absorb books by reading the text or listening to the audio version. 
+
+**Technologies**
+- Next
+- TypeScript
+- Tailwind CSS
+- Redux Toolkit
+- Firebase
+
+**Features**
+- API integration utilizing server-side rendering
+- Responsive design
+- Dynamic data respresentation
+- Interactive UI for book text and audio
+- Profile creating and authentication
+- Credit/Debit card read testing state ready for payment processing
+
+**Future Improvements**
+- Rework server side rendering into a more modular implementation
+- Add contact page
+
+**Author**
+Developed by Broady Butler
 
 ## Getting Started
 
-First, run the development server:
+1. Clone Repository
+
+git clone https://github.com/broadaciousb/summaristProject.git
+
+2. Install Dependencies
+
+npm install
+
+3. Run Development Server
 
 ```bash
 npm run dev
@@ -16,25 +48,7 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
