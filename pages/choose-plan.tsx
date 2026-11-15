@@ -21,19 +21,27 @@ export default function settings() {
   const dispatch = useAppDispatch();
   const loading = useAppSelector((state) => state.loading.loading);
 
-  const upgradeToYearly = async () => {
-    const priceId= "price_1SYp7OPi81VILnPFzVj4N4Sg";
+  const startCheckout = async (priceId: string) => {
+  try {
     const checkoutUrl = await getCheckoutUrl(app, priceId);
-    router.push(checkoutUrl);
-    console.log("Upgrade to Yearly");
+    window.location.assign(checkoutUrl);
+  } catch (error) {
+    console.error("Checkout failed", error);
+    alert(
+      error instanceof Error
+        ? error.message
+        : "Unable to start checkout."
+    );
+  } finally {
+    dispatch(stopLoading());
   }
+};
 
-  const upgradeToMonthly = async () => {
-    const priceId= "price_1SYp8DPi81VILnPFDQ6m8ikN";
-    const checkoutUrl = await getCheckoutUrl(app, priceId);
-    router.push(checkoutUrl);
-    console.log("Upgrade to Yearly");
-  }
+const upgradeToYearly = () =>
+  startCheckout("price_1SYp7OPi81VILnPFzVj4N4Sg");
+
+const upgradeToMonthly = () =>
+  startCheckout("price_1SYp8DPi81VILnPFDQ6m8ikN");
 
   const toggleFAQ = (index: number) => {
     setOpenFAQs(

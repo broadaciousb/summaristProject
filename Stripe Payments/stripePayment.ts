@@ -32,22 +32,31 @@ export const getCheckoutUrl = async (
   });
 
   return new Promise((resolve, reject) => {
-    // Listen for Stripe extension to attach the checkout URL
-    const unsubscribe = onSnapshot(docRef, (snap) => {
+  const timeout = setTimeout(() => {
+    unsubscribe();
+    reject(new Error("Checkout timed out. Please try again."));
+  }, 30000);
+
+  const unsubscribe = onSnapshot(
+    docRef,
+    (snap) => {
       const data = snap.data();
-      if (!data) return;
 
-      const { error, url } = data;
-
-      if (error) {
-        reject(new Error(error.message));
+      if (data?.error) {
+        clearTimeout(timeout);
         unsubscribe();
-      }
-
-      if (url) {
-        resolve(url);
+        reject(new Error(data.error.message));
+      } else if (data?.url) {
+        clearTimeout(timeout);
         unsubscribe();
+        resolve(data.url);
       }
-    });
-  });
+    },
+    (error) => {
+      clearTimeout(timeout);
+      unsubscribe();
+      reject(error);
+    }
+  );
+});
 };
