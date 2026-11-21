@@ -6,17 +6,18 @@ import {
   addDoc,
   collection,
   doc,
+  getDoc,
   onSnapshot,
 } from "firebase/firestore";
 
 export const getCheckoutUrl = async (
   app: FirebaseApp,
-  priceId: string
-): Promise<string> => {
+  productId: string
+) => {
   const userId = auth.currentUser?.uid;
   if (!userId) throw new Error("User is not authenticated");
 
-  // Reference to: customers/{userId}/checkout_sessions
+  // Reference to: customers/{userId}/checkout_sessions in Firestore
   const checkoutSessionRef = collection(
     db,
     "customers",
@@ -26,37 +27,20 @@ export const getCheckoutUrl = async (
 
   // Create checkout session
   const docRef = await addDoc(checkoutSessionRef, {
-    price: priceId,
+    productId: productId,
     success_url: window.location.origin,
     cancel_url: window.location.origin,
   });
 
-  return new Promise((resolve, reject) => {
-  const timeout = setTimeout(() => {
-    unsubscribe();
-    reject(new Error("Checkout timed out. Please try again."));
-  }, 30000);
+  // Reference to: products/{productId} in Firestore
+  const productRef = doc(db, "products", productId);
 
-  const unsubscribe = onSnapshot(
-    docRef,
-    (snap) => {
-      const data = snap.data();
+  const productData = await getDoc(productRef);
 
-      if (data?.error) {
-        clearTimeout(timeout);
-        unsubscribe();
-        reject(new Error(data.error.message));
-      } else if (data?.url) {
-        clearTimeout(timeout);
-        unsubscribe();
-        resolve(data.url);
-      }
-    },
-    (error) => {
-      clearTimeout(timeout);
-      unsubscribe();
-      reject(error);
-    }
-  );
-});
+  if (productData.exists()) {
+    console.log("Document data:", productData.data());
+    return productData.data().stripeLink;
+  } else {
+    console.log("No such document in Firestore.");
+  }
 };

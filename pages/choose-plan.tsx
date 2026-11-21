@@ -21,10 +21,10 @@ export default function settings() {
   const dispatch = useAppDispatch();
   const loading = useAppSelector((state) => state.loading.loading);
 
-  const startCheckout = async (priceId: string) => {
+  const startCheckout = async (productId: string) => {
   try {
-    const checkoutUrl = await getCheckoutUrl(app, priceId);
-    window.location.assign(checkoutUrl);
+    const checkoutUrl = await getCheckoutUrl(app, productId);
+    router.push(checkoutUrl);
   } catch (error) {
     console.error("Checkout failed", error);
     alert(
@@ -38,10 +38,10 @@ export default function settings() {
 };
 
 const upgradeToYearly = () =>
-  startCheckout("price_1SYp7OPi81VILnPFzVj4N4Sg");
+  startCheckout("prod_TVqpNiitzRZnXe");
 
 const upgradeToMonthly = () =>
-  startCheckout("price_1SYp8DPi81VILnPFDQ6m8ikN");
+  startCheckout("prod_TVqpnxhkAC3jaP");
 
   const toggleFAQ = (index: number) => {
     setOpenFAQs(
@@ -121,7 +121,7 @@ const upgradeToMonthly = () =>
                   <FaHandshake className="w-[60px] h-[60px]" />
                 </figure>
                 <div className="plan__features--text text-[394547] leading-[1.5]">
-                  <b>Precise recommended</b> collections curated by expoerts
+                  <b>Precise recommended</b> collections curated by experts
                 </div>
               </div>
             </div>

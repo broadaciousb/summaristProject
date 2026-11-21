@@ -1,15 +1,15 @@
-Summarist Project
+# Summarist Project
 
 A full-stack book subscription SaaS platform where users can digitally absorb books by reading the text or listening to the audio version. 
 
-**Technologies**
+## Technologies
 - Next
 - TypeScript
 - Tailwind CSS
 - Redux Toolkit
 - Firebase
 
-**Features**
+## Features
 - API integration utilizing server-side rendering
 - Responsive design
 - Dynamic data respresentation
@@ -17,11 +17,11 @@ A full-stack book subscription SaaS platform where users can digitally absorb bo
 - Profile creating and authentication
 - Credit/Debit card read testing state ready for payment processing
 
-**Future Improvements**
+## Future Improvements
 - Rework server side rendering into a more modular implementation
 - Add contact page
 
-**Author**
+## Author
 Developed by Broady Butler
 
 ## Getting Started
