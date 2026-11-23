@@ -28,22 +28,20 @@ Developed by Broady Butler
 
 1. Clone Repository
 
+```bash
 git clone https://github.com/broadaciousb/summaristProject.git
+```
 
 2. Install Dependencies
 
+```bash
 npm install
+```
 
 3. Run Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
