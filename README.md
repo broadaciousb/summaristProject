@@ -10,9 +10,6 @@ A full-stack book subscription SaaS platform where users can digitally absorb bo
 - Firebase
 
 ## Features
-- API integration utilizing server-side rendering
-- Responsive design
-- Dynamic data respresentation
 - Interactive UI for book text and audio
 - Profile creating and authentication
 - Credit/Debit card read testing state ready for payment processing
